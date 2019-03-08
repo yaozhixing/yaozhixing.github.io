@@ -5,7 +5,7 @@
 # Site
 title: Danny 
 subtitle: 个人博客
-author: 姚志星
+author: Danny
 language:
 timezone:
 
@@ -53,6 +53,8 @@ anchorjs: true                          # if you want to customize anchor. check
 # Share component is depend on Comment so we can NOT use share only.
 #duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
+#来必力账号
+livere_uid: MTAyMC8zMjMwNS84ODY2
 
 # Analytics settings
 #Baidu Analytics

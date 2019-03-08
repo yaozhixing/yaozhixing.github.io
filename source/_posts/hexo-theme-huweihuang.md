@@ -11,11 +11,11 @@ catagories:
 - Hexo
 
 ---
-> This HuWeihuang theme created by [HuWeihuang](http://www.huweihuang.com/) modified from the original Porter [YuHsuan](https://github.com/YenYuHsuan/hexo-theme-beantech)
+> This HuWeihuang theme created by [HuWeihuang](https://github.com/yaozhixing) modified from the original Porter [YuHsuan](https://github.com/YenYuHsuan/hexo-theme-beantech)
 
 # Live Demo
 
-Hu Weihuang Blog : [www.huweihuang.com](http://www.huweihuang.com/)
+Hu Weihuang Blog : [www.huweihuang.com](https://github.com/yaozhixing)
 
 ![Theme HuWeihuang](http://img.huweihuang.com/blog.jpg)
 
@@ -134,5 +134,5 @@ hexo deploy # hexo will push the static files automatically into the specific br
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Place this tag where you want the button to render. -->
 
-Please <a class="github-button" href="https://github.com/huweihuang/hexo-theme-huweihuang" data-icon="octicon-star" aria-label="Star huweihuang/hexo-theme-huweihuang on GitHub">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/huweihuang" aria-label="Follow @huweihuang on GitHub">Follow</a> would also be appreciated!
+Please <a class="github-button" href="https://github.com/yaozhixing/yaozhixing.github.io" data-icon="octicon-star" aria-label="Star yaozhixing/yaozhixing.github.io on GitHub">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/yaozhixing" aria-label="Follow @yaozhixing on GitHub">Follow</a> would also be appreciated!
 Peace!
