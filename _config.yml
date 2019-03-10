@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Danny 
-subtitle: 个人博客
+title: Danny Blog
+subtitle: 每天多努力一点，进步就多一点
 author: Danny
 language:
 timezone:
@@ -21,7 +21,7 @@ permalink_defaults:
 #Custom Setting Start
 
 # Site settings
-SEOTitle: Danny | 个人博客
+SEOTitle: Danny Blog
 email: 772364562@qq.com
 description: ""
 keyword: ""
@@ -91,7 +91,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 ## Friends
 friends: [
     {
-        title: "Blog Danny",
+        title: "Danny Blog",
         href: "https://yaozhixing.github.io/"
     },
     {
@@ -212,7 +212,7 @@ alipay: alipay_url
 share: true
 
 ## Themes: https://hexo.io/themes/
-theme: huweihuang
+theme: danny
 
 #sitemap
 sitemap:
