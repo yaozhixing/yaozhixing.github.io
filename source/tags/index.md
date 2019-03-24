@@ -2,5 +2,5 @@
 layout: "tags"
 title: "Tags"
 description: "Hey, this is Tags."
-header-img: "/img/header_img/tag.jpg"
+header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg_tags.jpg"
 ---

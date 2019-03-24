@@ -6,7 +6,7 @@ subtitle:
 header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg29.jpg"
 tags:
 ---
-##[hexo] hexo-theme-Danny 更换主题 基础入门（二）
+## [hexo] hexo-theme-Danny 更换主题 基础入门（二）
 
 >这个由Danny创作的Danny主题，是从原来的 [HuWeihuang](https://www.huweihuang.com/)和 [YenYuHsuan](http://beantech.org/) 改编而来的。
 
@@ -41,7 +41,7 @@ npm install hexo-cli -g
 ```
 ### 使用方法
 ```
-git clone 
+git clone https://github.com/yaozhixing/hexo-theme-Danny.git
 cd hexo-Theme-Danny
 npm install
 ```
