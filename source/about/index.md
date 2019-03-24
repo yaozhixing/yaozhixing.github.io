@@ -1,38 +1,41 @@
 ---
 layout: "about"
 title: "About"
-date: 2017-10-03 10:48:33
-description: "走在成为极客的路上"
+date: 2019-03-23 09:08:58
+description: "一砖一码一世界"
 header-img: "/img/header_img/about.jpg"
 aplayer: true
 fixed: false
 ---
 
-### 一句话
+### 码农心雨
 
->Just do it !    (翻译：我只是个搞 IT的！哭笑脸)
+>相信自己会做的更好，虽然我只是个写代码的！ o(*￣︶￣*)o
+>努力可能不会成功，但是不努力一定不会成功！
+>放手一搏，尝试新鲜事物，学习不要墨守成规，要善于总结，总结是最好的老师！
+>世界上本来没有程序员的，学了之后，发现就多了。
 
 ### 关于我
 
->一个莫名其妙的，喜欢敲代码，喜欢研究技术的，表面上高冷、不苟言笑的，
+>喜欢写代码，专研前沿技术，一个遇到尴尬就挠头的前端开发程序员。(#^.^#)
 >
->偶尔又嬉皮笑脸，偶尔又特立独行的，双重性格的技术爱好者！
+>偶尔喜欢幽默，喜欢特爱看魔术表演，小时候特崇拜，好神奇啊，帮我变个棒棒糖给我！
+>喜欢金庸武侠小说，网名武林萌主，从小有特别梦想自己有武当派的轻功，武当梯云纵，走路也轻松！
 
-### 兴趣方向
+### 兴趣爱好
 
-> 容器云（Docker、Kubernetes等）相关生态技术研究。
+> 喜欢爬山，深圳有梧桐山，估计现在我爬不上去了，好久没去了。
+> 喜欢游泳，乡下爷爷教会我游泳的，夏天有空就去游泳馆游泳，游完感觉整个人都很轻松。
+> 写写代码吧~
 
 ### 参与社区
 
- > CSDN博客:http://blog.csdn.net/huwh_
+ > 博客:[https://yaozhixing.github.io](https://yaozhixing.github.io)
  >
- > Github:https://github.com/huweihuang
- >
- > 阿里云栖社区:https://yq.aliyun.com/u/huweihuang
- >
- > DockOne社区:http://dockone.io/people/胡伟煌
+ > Github:[https://github.com/yaozhixing](https://github.com/yaozhixing) 
+ 
 
 ### 联系我
 
->Email: huweihuang@foxmail.com
+>Email: 772364562@qq.com
 

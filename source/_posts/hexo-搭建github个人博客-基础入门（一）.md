@@ -3,8 +3,11 @@ title: '[hexo] 搭建github个人博客 基础入门（一）'
 catalog: true
 date: 2019-03-19 01:06:33
 subtitle:
-header-img: "http://po4ucl8b6.bkt.clouddn.com/post01_headbg.jpg"
+header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg10.jpg"
 tags:
+- Hexo
+catagories:
+- Hexo
 ---
 ## [hexo] 搭建github个人博客 基础入门（一）
 Hexo是一个快速、简洁且高效的博客框架。Hexo使用Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。本文介绍如何在Mac以及Windows上搭建Hexo，Linux用户也可以参考。综合官网教程以及自己在安装过程中的踩坑经历写下了教程，一步一步来就可以排忧解难了。
@@ -38,8 +41,8 @@ $ hexo init yaozhixing.github.io
 $ cd aozhixing.github.io
 $ npm install
 ```
-创建一个文件夹[yaozhixing.github.io]（必须是用 github账户名和.github.io 组成）。为什么取一个这个长的名字？本人装了2-3遍hexo d命令提交不成功，都是因为这个问题。<br>
-因为后面，我们在github会创建一个项目就叫做 [yaozhixing.github.io]，对，没错，[xxxx.github.io]，这个xxxx就是你的github账户名（昵称，不是邮箱名），一旦这个项目生成，github就会Settings的GitHub Pages自动生成一个二级域名，地址就是：[xxxx.github.io]，所以我们的博客名必须是用 github账户名和.github.io 组成的，特别注意！
+创建一个文件夹[yaozhixing.github.io](https://yaozhixing.github.io/),必须是用 账户名+.github.io 组成。为什么取一个这个长的名字？本人装了2-3遍hexo d命令提交不成功，都是因为这个问题。<br>
+因为后面，我们在github会创建一个项目就叫做: yaozhixing.github.io，对，没错，xxxx.github.io，这个xxxx就是你的github账户名（昵称，不是邮箱名），一旦这个项目生成，github就会Settings的GitHub Pages自动生成一个二级域名，地址就是：xxxx.github.io，特别注意！
 新建完成后，指定文件夹的目录如下：
 
 ```
@@ -141,7 +144,7 @@ ssh-add ~/.ssh/id_rsa
 ```
 ![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh04.png)
 
-#### 6、gitee添加ssh。
+#### 6、github添加ssh。
 - 登录github，[ 我的头像] > [ 设置 ] > [ SSH and GPG keys ] > [ 添加ssh ]添加帐号SSH Keys
 ![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh05.png)
 
@@ -150,7 +153,7 @@ ssh-add ~/.ssh/id_rsa
 ssh -T git@github.com
 ```
 ![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh06.png)
-如上图，Hi,XXX， You 're successfully authenticated .... 一大串。就说明你本地ssh 公钥和github配置成功！后面就可以一键提交！
+如上图，Hi,XXX， You 've successfully authenticated .... 一大串。就说明你本地ssh 公钥和github配置成功！后面就可以一键提交！
 
 #### 7、代码生成，服务器提交。
 
@@ -171,7 +174,7 @@ nice，到这里初步的博客就完成了，步骤有点多，不过简单，�
 
 > 其他文章列表，如下：
 
-##### hexo源代码和生产代码同时保存在同一个项目里且提交？
-##### git如何生成秘钥？
-##### hexo如何更换默认主题？
-##### hexo博文添加评论功能？
+#### [hexo] hexo-theme-Danny 更换主题 基础入门（二）
+#### hexo源代码和生产代码同时保存在同一个项目里且提交？
+#### git如何生成秘钥？
+#### hexo博文添加评论功能？
