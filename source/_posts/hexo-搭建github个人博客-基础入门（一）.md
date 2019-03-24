@@ -98,8 +98,7 @@ deploy:
 ```
 
 #### 5、生成SSH密钥过程（每次提交不用输入账号密码）。
-这里一篇文章介绍怎么生成公共秘钥的：
-[http://blog.csdn.net/benben513624/article/details/75264005](http://blog.csdn.net/benben513624/article/details/75264005)，后续我会针对写一篇针对怎么生存ssh秘钥，步骤如下：
+这里单独有一篇 [生成SSH密钥和公钥，如何关联配置github项目？](https://yaozhixing.github.io/article/git-生成SSH密钥和公钥，如何关联配置github项目？/)，可以另开窗口看，或者继续往下看也可以，步骤如下：
 
 - 根目录执行下列命令配置你的用户名
 ```

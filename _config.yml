@@ -226,4 +226,4 @@ deploy:
   type: git
   repository: git@github.com:yaozhixing/yaozhixing.github.io.git
   branch: master
-  message: theme主题
+  message: 添加博文

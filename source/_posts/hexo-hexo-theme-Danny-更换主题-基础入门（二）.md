@@ -5,8 +5,12 @@ date: 2019-03-24 14:40:05
 subtitle:
 header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg29.jpg"
 tags:
+- Hexo
+- 主题
+catagories:
+- Hexo
 ---
-## [hexo] hexo-theme-Danny 更换主题 基础入门（二）
+## [hexo] hexo-theme-Danny 
 
 >这个由Danny创作的Danny主题，是从原来的 [HuWeihuang](https://www.huweihuang.com/)和 [YenYuHsuan](http://beantech.org/) 改编而来的。
 
@@ -41,11 +45,12 @@ npm install hexo-cli -g
 ```
 ### 使用方法
 ```
-git clone https://github.com/yaozhixing/hexo-theme-Danny.git
+git clone 
 cd hexo-Theme-Danny
 npm install
+hexo s
 ```
-
+hexo s 运行一下，打开浏览器：[http://localhost:4000/](http://localhost:4000/)   看看主题效果。(#^.^#)
 
 ----------
 
@@ -70,15 +75,36 @@ permalink: :category/:title/
 permalink_defaults:
   lang: en
 ```
-这里还有其他文件配置信息，可根据自己需求设置：
-header-img:  首页banner图片地址
-article-img: 文章背景图片
-404-img:  404 图片地址
-signature: false #show signature
-signature-img: img/signature/BeanTechSign-white.png
-theme: 采用什么博客主题，文件夹名称
 
-##### 2、Deployment选项
+##### 2、设置首页banner图片地址
+```
+header-img: /img/header_img/home.jpg
+```
+
+##### 3、设置博文的默认banner图片地址
+```
+article-img: /img/article_header/article_bg.jpg
+```
+
+##### 4、设置github账户连接名称
+```
+github_username:    yaozhixing
+```
+
+##### 5、侧边栏设置
+```
+sidebar: true    
+sidebar-about-description: "<your description>"
+sidebar-avatar: /img/avatar/myAvatar.jpg 	#头像
+```
+
+##### 6、开启评论插件
+本博客为例，采用来必力社区评论，请先去[来必力](https://www.livere.com/)申请账号，获取账号复制到这里
+```
+livere_uid:  xxxxx
+```
+
+##### 7、Deployment选项
 ``很重要`` ``很重要`` ``很重要``, 请正确配置，如果不会，请看上一节 [ [hexo]搭建github个人博客 基础入门（一）](https://yaozhixing.github.io/article/hexo-%E6%90%AD%E5%BB%BAgithub%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/)
 ```
 deploy:
@@ -91,26 +117,6 @@ type：提交方式采用git
 repository： 远程仓库的https地址和ssh的地址，我这里采用ssh地址，可根据上一节教程配置本地公钥，在github的添加公钥上去，就可以一件提交
 branch： 远程地址提交的分支
 message： 每次提交的提交说明
-
-##### 3、侧边栏设置
-sidebar: 是否显示侧边栏；
-sidebar-about-description: 描述
-sidebar-avatar: 头像
-```
-sidebar: true    
-sidebar-about-description: "<your description>"
-sidebar-avatar: img/<your avatar path>
-```
-
-##### 4、开启评论插件
-本博客为例，采用来必力社区评论，请先去[来必力](https://www.livere.com/)申请账号，获取账号复制到这里
-```
-livere_uid:  xxxxx
-```
-
-#### 5、返回顶部图标设置
-我的图片是钢铁侠，可以在css/image上更改为你自己的图片。
-
 
 ----------
 
@@ -125,8 +131,8 @@ home_posts_tag: true
 ----------
 
 
-### Hexo Basics
-hexo 语法命令，如下：
+### Hexo 基础语法
+
 - 新建博文： hexo new post  "xxx"
 - 清空静态缓存文件： hexo clean 
 - 生成静态文件： hexo generate （简写： hexo g）
@@ -135,7 +141,7 @@ hexo 语法命令，如下：
 
 
 ----------
-### 赞一个
+### 点亮Star
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
