@@ -5,7 +5,7 @@
 
         <% if(config['sidebar-avatar']) { %>
 			<% if (config.github_username) { %>
-				<a target="_blank" href="https://github.com/<%= config.github_username %>"><img id = "avatar_pic" src="<%= config['sidebar-avatar'] %>" /></a>
+				<a target="_blank" title="<%= config.github_username %>" href="https://github.com/<%= config.github_username %>"><img id = "avatar_pic" src="<%= config['sidebar-avatar'] %>" /></a>
 			<% } %>
 			<% else { %> 
 				<img id = "avatar_pic" src="<%= config['sidebar-avatar'] %>" />
