@@ -4,12 +4,9 @@
     <div class="short-about">
 
         <% if(config['sidebar-avatar']) { %>
-			<% if (config.github_username) { %>
-				<a target="_blank" title="<%= config.github_username %>" href="https://github.com/<%= config.github_username %>"><img id = "avatar_pic" src="<%= config['sidebar-avatar'] %>" /></a>
-			<% } %>
-			<% else { %> 
-				<img id = "avatar_pic" src="<%= config['sidebar-avatar'] %>" />
-			<% } %>
+			
+				<a target="_blank" title="<%= config.github_username %>"  href="https://github.com/<%= config.github_username %>"><img id = "avatar_pic" src="<%= config['sidebar-avatar'] %>" /></a>
+			
         <% } %>
 
         <% if(config['sidebar-about-description']) { %>
