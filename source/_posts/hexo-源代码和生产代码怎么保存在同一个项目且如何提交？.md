@@ -3,7 +3,7 @@ title: '[hexo] hexo-源代码和生产代码怎么保存在同一个项目且如
 catalog: true
 date: 2019-03-24 22:00:23
 subtitle:
-header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg41.jpg"
+header-img: "http://cdn.dannyee.com/headbg41.jpg"
 tags:
 - Hexo
 catagories:

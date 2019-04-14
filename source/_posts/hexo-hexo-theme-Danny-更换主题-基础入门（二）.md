@@ -3,7 +3,7 @@ title: '[hexo] hexo-theme-Danny 更换主题 基础入门（二）'
 catalog: true
 date: 2019-03-24 14:40:05
 subtitle:
-header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg29.jpg"
+header-img: "http://cdn.dannyee.com/headbg29.jpg"
 tags:
 - Hexo
 - 主题
@@ -19,19 +19,19 @@ catagories:
 Danny Blog : [https://yaozhixing.github.io/](https://yaozhixing.github.io/)
 
 首页截图↓：
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post02_01.png)
+![enter image description here](http://cdn.dannyee.com/post02_01.png)
 
 归档↓：
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post02_02.png)
+![enter image description here](http://cdn.dannyee.com/post02_02.png)
 
 Tags标签↓：
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post02_03.png)
+![enter image description here](http://cdn.dannyee.com/post02_03.png)
 
 关于我↓：
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post02_04.png)
+![enter image description here](http://cdn.dannyee.com/post02_04.png)
 
 博文示例↓：
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post02_05.png)
+![enter image description here](http://cdn.dannyee.com/post02_05.png)
 
 ----------
 

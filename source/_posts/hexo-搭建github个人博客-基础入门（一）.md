@@ -3,7 +3,7 @@ title: '[hexo] 搭建github个人博客 基础入门（一）'
 catalog: true
 date: 2019-03-19 01:06:33
 subtitle:
-header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg10.jpg"
+header-img: "http://cdn.dannyee.com/headbg10.jpg"
 tags:
 - Hexo
 catagories:
@@ -77,10 +77,10 @@ $ hexo s
 
 ## 申请github免费静态内容空间
 #### 1、请先在github官网注册账号然后才可以新建项目，创建一个叫“yaozhixing.github.io”的项目。如图：
-![创建一个叫yaozhixing.github.io的项目](http://po4ucl8b6.bkt.clouddn.com/post01_01.png)
+![创建一个叫yaozhixing.github.io的项目](http://cdn.dannyee.com/post01_01.png)
 
 ##### 2、复制项目的ssh链接，这里我们用ssh链接做。（因为https链接地址hexo后面可能会报错）如图：
-![ssh链接](http://po4ucl8b6.bkt.clouddn.com/post01_02.png)
+![ssh链接](http://cdn.dannyee.com/post01_02.png)
 
 #### 3、安装deployer-git（勿忘）
 
@@ -121,37 +121,37 @@ $ ssh-keygen -t rsa -C “yaozhixing797600@163.com”
 ```
 cd  ~/.ssh
 ```
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh01.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh01.png)
 - 连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub
 ```
 ssh-keygen -t rsa -C "yaozhixing797600@163.com"
 ```
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh02.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh02.png)
 生成文件默认路径
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh02_01.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh02_01.png)
 
 - 输入eval "$(ssh-agent -s)"，添加密钥到ssh-agent
 ```
 eval "$(ssh-agent -s)"
 ```
 结果会像这样：
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh03.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh03.png)
 
 - 再次输入命令
 ```
 ssh-add ~/.ssh/id_rsa
 ```
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh04.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh04.png)
 
 #### 6、github添加ssh。
 - 登录github，[ 我的头像] > [ 设置 ] > [ SSH and GPG keys ] > [ 添加ssh ]添加帐号SSH Keys
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh05.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh05.png)
 
 - 输入下列命令进行验证是否成功
 ```
 ssh -T git@github.com
 ```
-![enter image description here](http://po4ucl8b6.bkt.clouddn.com/post01_ssh06.png)
+![enter image description here](http://cdn.dannyee.com/post01_ssh06.png)
 如上图，Hi,XXX， You 've successfully authenticated .... 一大串。就说明你本地ssh 公钥和github配置成功！后面就可以一键提交！
 
 #### 7、代码生成，服务器提交。

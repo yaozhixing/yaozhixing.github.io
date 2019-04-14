@@ -3,7 +3,7 @@ layout: "about"
 title: "About"
 date: 2019-03-23 09:08:58
 description: "一砖一码一世界"
-header-img: "http://po4ucl8b6.bkt.clouddn.com/headbg_about.jpg"
+header-img: "http://cdn.dannyee.com/headbg_about.jpg"
 aplayer: true
 fixed: false
 ---
