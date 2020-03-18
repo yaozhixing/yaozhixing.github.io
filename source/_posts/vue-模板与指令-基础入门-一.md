@@ -1,5 +1,5 @@
 ---
-title: vuejs 模板与指令 基础入门(一)
+title: vue 模板与指令 基础入门(一)
 catalog: true
 date: 2019-05-16 23:47:32
 subtitle:
