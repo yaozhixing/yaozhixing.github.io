@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          vue 模板与指令 基础入门(一) - Danny Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://blog.dannyee.com/article/vue-模板与指令-基础入门-一/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('http://cdn.dannyee.com/headbg06.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#vue" title="vue">vue</a>
+                            
+                        </div>
+                        <h1>vue 模板与指令 基础入门(一)</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Danny on
+                            2019-05-16
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" title="Danny Blog">Danny Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a title="Home" href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a title="About" href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a title="Archives" href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a title="Tags" href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h5><span id="入门">入门</span></h5>
+<blockquote>
+<p>vuejs，作者尤雨溪，渐进式 JavaScript 框架，轻巧，方便，通俗易懂。Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。</p>
+</blockquote>
+<a id="more"></a>
+<h5><span id="官网">官网</span></h5>
+<blockquote>
+<p><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">https://cn.vuejs.org/</a></p>
+</blockquote>
+<p>今天来学习 Vuejs 的一些指令开始，在学习指令之前必须先入门 vue 的语法模板，下面一起来学习吧！</p>
+<h4><span id="一-vuejs-语法模板">一、Vuejs 语法模板</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;&#123; name &#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    name: &apos;showName&apos;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            name: &apos;danny&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    methods: &#123;</span><br><span class="line">        //方法</span><br><span class="line">        handleSomeThing() &#123;</span><br><span class="line">            //do something</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    // 初始化执行</span><br><span class="line">    created()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">    /* css 样式表 */</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4><span id="二-文本插值">二、文本插值</span></h4>
+<p>语法：两队花括号，里面是 data 里面的名称，如：</p>
+<p>ShowName.vue 为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;h2&gt;&#123;&#123; say &#125;&#125;&lt;/h2&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        say: &quot;Hello World&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="三-绑定元素特性-v-bind">三、绑定元素特性 v-bind</span></h4>
+<p>动态获取 data 里的数据，渲染视图的节点上。用于接口返回的数据动态渲染页面上。</p>
+<p><strong>v-bind:src 简写成 :src</strong> ，直接省去 v-bind，很方便的语法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;img v-bind:src=&quot;imgPath&quot; v-bind:title=&quot;imgInfo&quot; v-bind:alt=&quot;imgInfo&quot; /&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<p>也可简写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;img :src=&quot;imgPath&quot; :title=&quot;imgInfo&quot; :alt=&quot;imgInfo&quot; /&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        imgPath: &quot;https://www.baidu.com/img/baidu_jgylogo3.gif&quot;,</span><br><span class="line">        imgInfo: &quot;百度图片地址&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="四-条件-v-if">四、条件 v-if</span></h4>
+<p>语法：v-if 控制一个元素是否显示，后面接的是一个布尔值。 v-if=“isShow”, 如果 isShow 是 true 为显示，为 false 则隐藏</p>
+<blockquote>
+<p>v-if 控制 h2 标签 dom 树，显示则 dom 树出现，如果<strong>隐藏则移除该元素在 dom 的节点</strong>(有点像 jquery 的 remove 语法)；<br>
+v-show 的语法是控制 h2 标签，设置 display 值在 block 和 none 切换，它一直存在 dom 树上</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;h2 v-if=&quot;isShow&quot;&gt;my Blog&lt;/h2&gt;</span><br><span class="line">    &lt;h2 v-else&gt;is show me?&lt;/h2&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        isShow: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="五-条件-v-show">五、条件 v-show</span></h4>
+<p>语法：这个就是和 v-if 难兄难弟了。v-show 同时控制元素显示隐藏的，设置 display 值在 block 和 none 切换，它一直存在 dom 树上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;h2 v-show=&quot;isShow&quot;&gt;my Blog&lt;/h2&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        isShow: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="六-循环-v-for">六、循环 v-for</span></h4>
+<p>语法：绑定数组的数据来渲染一个项目列表。<br>
+v-for=&quot;(item, index) in cityList&quot;<br>
+其中</p>
+<ul>
+<li>item：循环出每一个对象放入了这个变量，后面可以直接打点引用，如：<a href="http://itme.id" target="_blank" rel="noopener">itme.id</a>；</li>
+<li>index：对象的索引</li>
+<li>cityList: 为 data 数据里面的数组或对象了；
+<blockquote>
+<p>官网提示要带上 :key 唯一关键属性，不然会警告报错的，而且使用数字和字符串类型，不要使用对象或数组类型</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;ul</span><br><span class="line">        v-for=&quot;(item, index) in cityList&quot;</span><br><span class="line">        :key=&quot;index&quot;</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;li&gt;&#123;&#123;itme.id&#125;&#125;、&#123;&#123;item.name&#125;&#125;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        cityList: [</span><br><span class="line">            &#123;</span><br><span class="line">                id: 1,</span><br><span class="line">                name: &quot;北京&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 2,</span><br><span class="line">                name: &quot;上海&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 3,</span><br><span class="line">                name: &quot;广州&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 4,</span><br><span class="line">                name: &quot;深圳&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="八-双向绑定-v-model">八、双向绑定 v-model</span></h4>
+<p>语法： 多用于表单输入框的值和应用状态之间的双向绑定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; name &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;input v-model=&quot;name&quot; /&gt;</span><br><span class="line">    &lt;!-- 输入框的值一变动，p标签的文本插值也变动了，也就是说 data里的值变动，都会受影响--&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        name: &quot;danny&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大家可以根据这个例子和正则表达式，写个手机号码输入空格提示框，身份证号码放大提示框，银行卡放大且每 4 个数字空格的提示框等等；</p>
+<h4><span id="九-事件-v-on">九、事件 v-on</span></h4>
+<p>语法：添加一个事件监听器，监听事件处理的事情和逻辑</p>
+<p>v-on:click=“handleClcik” 简写: @click=“handleClcik”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;title&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button v-on:click=&quot;handleClcik&quot;&gt;点我&lt;/button&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;title&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;handleClcik&quot;&gt;点我&lt;/button&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">script</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        title: &quot;hello&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    handleClcik()&#123;</span><br><span class="line">        console.log(&quot;title的值改变了&quot;)</span><br><span class="line">        this.title = &quot;javascript&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/article/git-常用命令操作/" data-toggle="tooltip" data-placement="top"
+                            title="git 常用命令操作">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/article/hexo-博文添加来必力评论功能/" data-toggle="tooltip" data-placement="top"
+                            title="[hexo] 博文添加来必力评论功能">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <div class="social-share" data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js">
+                </script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                
+                <!-- 畅言 评论框 start -->
+                <div id="SOHUCS"></div>
+                <!-- 畅言 评论框 end -->
+                
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">入门</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">官网</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">一、Vuejs 语法模板</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">二、文本插值</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">三、绑定元素特性 v-bind</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">四、条件 v-if</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">五、条件 v-show</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">六、循环 v-for</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">八、双向绑定 v-model</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number"></span> <span class="toc-nav-text">九、事件 v-on</span></a>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#vue"
+                            title="vue">vue</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                    <li><a href="https://yaozhixing.github.io/" target="_blank">Danny Blog</a></li>
+                    
+                    <li><a href="https://github.com/yaozhixing" target="_blank">github 姚志星</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 畅言js代码 start -->
+<script type="text/javascript">
+    (function () {
+        var appid = "cyubo3reV";
+        var conf = "prod_0c3e4f8a9f1ab4c2cf005e8db7b95fc9";
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write(
+                '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+                appid + '&conf=' + conf + '"><\/script>');
+        } else {
+            var loadJs = function (d, a) {
+                var c = document.getElementsByTagName("head")[0] || document.head || document
+                    .documentElement;
+                var b = document.createElement("script");
+                b.setAttribute("type", "text/javascript");
+                b.setAttribute("charset", "UTF-8");
+                b.setAttribute("src", d);
+                if (typeof a === "function") {
+                    if (window.attachEvent) {
+                        b.onreadystatechange = function () {
+                            var e = b.readyState;
+                            if (e === "loaded" || e === "complete") {
+                                b.onreadystatechange = null;
+                                a()
+                            }
+                        }
+                    } else {
+                        b.onload = a
+                    }
+                }
+                c.appendChild(b)
+            };
+            loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+                window.changyan.api.config({
+                    appid: appid,
+                    conf: conf
+                })
+            });
+        }
+    })();
+</script>
+<!-- 畅言js代码 end -->
+
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async (u, c) {
+        var d = document,
+            t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+        anchors.options = {
+            visible: 'hover',
+            placement: 'left',
+            icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link {
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top: -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yaozhixing">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Danny 2020
+                    <br>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a href="https://yaozhixing.github.io/">Danny</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=yaozhixing&repo=yaozhixing.github.io&type=star&count=true">
+                    </iframe>
+                    <br>
+                    ICP备案号: 粤ICP备19036275号-1
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async (u, c) {
+        var d = document,
+            t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if ($('#tag_cloud').length !== 0) {
+        async ("http://blog.dannyee.com/js/jquery.tagcloud.js", function () {
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {
+                    start: '#bbbbee',
+                    end: '#0085a1'
+                },
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://yaozhixing.github.io/';
+
+    // Originial
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://blog.dannyee.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

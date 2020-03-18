@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [hexo] 搭建github个人博客 基础入门（一） - Danny Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://blog.dannyee.com/article/hexo-搭建github个人博客-基础入门（一）/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('http://cdn.dannyee.com/headbg10.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                            
+                        </div>
+                        <h1>[hexo] 搭建github个人博客 基础入门（一）</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Danny on
+                            2019-03-19
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" title="Danny Blog">Danny Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a title="Home" href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a title="About" href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a title="Archives" href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a title="Tags" href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2><span id="hexo-搭建github个人博客-基础入门一">[hexo] 搭建github个人博客 基础入门（一）</span></h2>
+<p>Hexo是一个快速、简洁且高效的博客框架。Hexo使用Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。本文介绍如何在Mac以及Windows上搭建Hexo，Linux用户也可以参考。综合官网教程以及自己在安装过程中的踩坑经历写下了教程，一步一步来就可以排忧解难了。<br>
+官网地址：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
+<p>使用Hexo搭建的个人博客网站：<br>
+本人博客地址：<a href="https://yaozhixing.github.io/" target="_blank" rel="noopener">https://yaozhixing.github.io/</a></p>
+<a id="more"></a>
+<h2><span id="安装hexo">安装Hexo</span></h2>
+<h4><span id="1-安装nodejs">1. 安装Nodejs。</span></h4>
+<p><a href="https://link.jianshu.com?t=https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a>下载地址 此步骤省略，请查看官网安装nodejs</p>
+<h5><span id="2-更改npm源">2. 更改npm源</span></h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm config set registry https://registry.npm.taobao.org npm info underscore</span><br></pre></td></tr></table></figure>
+<p>原因是：国外的NPM源并不稳定，即使翻墙也不一定能将Hexo下载下来，所以这里直接更改为淘宝源镜像。</p>
+<h4><span id="3-安装hexo">3. 安装hexo</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>这里安装的是hexo最新版本，如果想安装以前的的版本请运行命令$ npm install -g hexo<br></p>
+<p>以上步骤不出问题的话就已经在本地机器上搭建起了Hexo环境。下面介绍Hexo的具体使用方法。</p>
+<h2><span id="quick-start">Quick Start</span></h2>
+<h4><span id="1-创建hexo工程">1、创建hexo工程</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init yaozhixing.github.io</span><br><span class="line">$ cd aozhixing.github.io</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>创建一个文件夹<a href="https://yaozhixing.github.io/" target="_blank" rel="noopener">yaozhixing.github.io</a>,必须是用 <a href="http://xn--+-i68a184bd05b.github.io" target="_blank" rel="noopener">账户名+.github.io</a> 组成。为什么取一个这个长的名字？本人装了2-3遍hexo d命令提交不成功，都是因为这个问题。<br><br>
+因为后面，我们在github会创建一个项目就叫做: <a href="http://yaozhixing.github.io" target="_blank" rel="noopener">yaozhixing.github.io</a>，对，没错，<a href="http://xxxx.github.io" target="_blank" rel="noopener">xxxx.github.io</a>，这个xxxx就是你的github账户名（昵称，不是邮箱名），一旦这个项目生成，github就会Settings的GitHub Pages自动生成一个二级域名，地址就是：<a href="http://xxxx.github.io" target="_blank" rel="noopener">xxxx.github.io</a>，特别注意！<br>
+新建完成后，指定文件夹的目录如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yaozhixing.github.io</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br><span class="line">|   └── landscape</span><br></pre></td></tr></table></figure>
+<p>好了，一个hexo的项目yaozhixing.github.io已经建立好了，辣么我们该怎么跑起来了呢？下面来啦…</p>
+<h4><span id="2-生成静态文件">2、生成静态文件</span></h4>
+<p>hexo generate  也可缩写成：<strong>hexo g</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<p>他的作用是什么？为什么要生成静态文件。原因就是：简单点就是将Markdown文件解析成HTML文件，<a href="http://xn--yaozhixing-eh3rh66k.github.io/public%E7%9B%AE%E5%BD%95%E4%B8%8B%E3%80%82" target="_blank" rel="noopener">放在yaozhixing.github.io/public目录下。</a></p>
+<h4><span id="3-运行hexo服务器">3、运行hexo服务器</span></h4>
+<p>命令行输入：hexo server   也可缩写成：<strong>hexo s</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>来，让我们跑起来吧~~，它不会自动弹出浏览器打开，需要我们手动打开。所以浏览器输入：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> <br></p>
+<p>好了，简单的博客我们搭建好了，那我们怎么上传到git服务器上呢？继续！！</p>
+<h2><span id="申请github免费静态内容空间">申请github免费静态内容空间</span></h2>
+<h4><span id="1-请先在github官网注册账号然后才可以新建项目创建一个叫yaozhixinggithubio的项目-如图">1、请先在github官网注册账号然后才可以新建项目，创建一个叫“”的项目。如图：</span></h4>
+<p><img src="http://cdn.dannyee.com/post01_01.png" alt="创建一个叫yaozhixing.github.io的项目"></p>
+<h5><span id="2-复制项目的ssh链接这里我们用ssh链接做-因为https链接地址hexo后面可能会报错如图">2、复制项目的ssh链接，这里我们用ssh链接做。（因为https链接地址hexo后面可能会报错）如图：</span></h5>
+<p><img src="http://cdn.dannyee.com/post01_02.png" alt="ssh链接"></p>
+<h4><span id="3-安装deployer-git勿忘">3、安装deployer-git（勿忘）</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h4><span id="4-在yaozhixinggithubio_configyml中修改deploy属性注意冒号后面有个空格把刚才ssh地址放在repository后面">4、在/yaozhixing.github.io/_config.yml中修改deploy属性(注意冒号:后面有个空格，),把刚才ssh地址放在repository后面</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:yaozhixing/yaozhixing.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  message: init blog</span><br></pre></td></tr></table></figure>
+<h4><span id="5-生成ssh密钥过程每次提交不用输入账号密码">5、生成SSH密钥过程（每次提交不用输入账号密码）。</span></h4>
+<p>这里单独有一篇 <a href="https://yaozhixing.github.io/article/git-%E7%94%9F%E6%88%90SSH%E5%AF%86%E9%92%A5%E5%92%8C%E5%85%AC%E9%92%A5%EF%BC%8C%E5%A6%82%E4%BD%95%E5%85%B3%E8%81%94%E9%85%8D%E7%BD%AEgithub%E9%A1%B9%E7%9B%AE%EF%BC%9F/" target="_blank" rel="noopener">生成SSH密钥和公钥，如何关联配置github项目？</a>，可以另开窗口看，或者继续往下看也可以，步骤如下：</p>
+<ul>
+<li>根目录执行下列命令配置你的用户名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;yaozhixing&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置邮箱</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.email &quot;yaozhixing797600@163.com&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成密钥</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C “yaozhixing797600@163.com”</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入.ssh 隐藏文件夹</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd  ~/.ssh</span><br></pre></td></tr></table></figure>
+<p><img src="http://cdn.dannyee.com/post01_ssh01.png" alt="enter image description here"></p>
+<ul>
+<li>连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;yaozhixing797600@163.com&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://cdn.dannyee.com/post01_ssh02.png" alt="enter image description here"><br>
+生成文件默认路径<br>
+<img src="http://cdn.dannyee.com/post01_ssh02_01.png" alt="enter image description here"></p>
+<ul>
+<li>输入eval “$(ssh-agent -s)”，添加密钥到ssh-agent</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br></pre></td></tr></table></figure>
+<p>结果会像这样：<br>
+<img src="http://cdn.dannyee.com/post01_ssh03.png" alt="enter image description here"></p>
+<ul>
+<li>再次输入命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p><img src="http://cdn.dannyee.com/post01_ssh04.png" alt="enter image description here"></p>
+<h4><span id="6-github添加ssh">6、github添加ssh。</span></h4>
+<ul>
+<li>
+<p>登录github，[ 我的头像] &gt; [ 设置 ] &gt; [ SSH and GPG keys ] &gt; [ 添加ssh ]添加帐号SSH Keys<br>
+<img src="http://cdn.dannyee.com/post01_ssh05.png" alt="enter image description here"></p>
+</li>
+<li>
+<p>输入下列命令进行验证是否成功</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p><img src="http://cdn.dannyee.com/post01_ssh06.png" alt="enter image description here"><br>
+如上图，Hi,XXX， You 've successfully authenticated … 一大串。就说明你本地ssh 公钥和github配置成功！后面就可以一键提交！</p>
+<h4><span id="7-代码生成服务器提交">7、代码生成，服务器提交。</span></h4>
+<ul>
+<li>先清除 hexo clean</li>
+<li>然后生成 hexo generate ， 也可缩写：hexo g</li>
+<li>再在发布 hexo deploy ，也可缩写成： hexo d</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>nice，到这里初步的博客就完成了，步骤有点多，不过简单，稍微耐心一点，就可以完成的，不过还有遗留问题没有解决，不过是下几篇博文的内容，如何源代码和生产的静态代码同时提交？怎么更换主题？博文怎么评论？。</p>
+<hr>
+<blockquote>
+<p>其他文章列表，如下：</p>
+</blockquote>
+<h4><span id="hexo-hexo-theme-danny-更换主题-基础入门二">[hexo] hexo-theme-Danny 更换主题 基础入门（二）</span></h4>
+<h4><span id="hexo源代码和生产代码同时保存在同一个项目里且提交">hexo源代码和生产代码同时保存在同一个项目里且提交？</span></h4>
+<h4><span id="git如何生成秘钥">git如何生成秘钥？</span></h4>
+<h4><span id="hexo博文添加评论功能">hexo博文添加评论功能？</span></h4>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/article/hexo-hexo-theme-Danny-更换主题-基础入门（二）/" data-toggle="tooltip" data-placement="top"
+                            title="[hexo] hexo-theme-Danny 更换主题 基础入门（二）">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/article/hello-world/" data-toggle="tooltip" data-placement="top"
+                            title="hello world">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <div class="social-share" data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js">
+                </script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                
+                <!-- 畅言 评论框 start -->
+                <div id="SOHUCS"></div>
+                <!-- 畅言 评论框 end -->
+                
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">[hexo] 搭建github个人博客 基础入门（一）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装Hexo</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text">1. 安装Nodejs。</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.0.1.1.</span> <span class="toc-nav-text">2. 更改npm源</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.0.2.</span> <span class="toc-nav-text">3. 安装hexo</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Quick Start</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.0.1.</span> <span class="toc-nav-text">1、创建hexo工程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.0.2.</span> <span class="toc-nav-text">2、生成静态文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.0.3.</span> <span class="toc-nav-text">3、运行hexo服务器</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">申请github免费静态内容空间</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.1.</span> <span class="toc-nav-text">1、请先在github官网注册账号然后才可以新建项目，创建一个叫“”的项目。如图：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.1.1.</span> <span class="toc-nav-text">2、复制项目的ssh链接，这里我们用ssh链接做。（因为https链接地址hexo后面可能会报错）如图：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.2.</span> <span class="toc-nav-text">3、安装deployer-git（勿忘）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.3.</span> <span class="toc-nav-text">4、在/yaozhixing.github.io/_config.yml中修改deploy属性(注意冒号:后面有个空格，),把刚才ssh地址放在repository后面</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.4.</span> <span class="toc-nav-text">5、生成SSH密钥过程（每次提交不用输入账号密码）。</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.5.</span> <span class="toc-nav-text">6、github添加ssh。</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.6.</span> <span class="toc-nav-text">7、代码生成，服务器提交。</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.7.</span> <span class="toc-nav-text">[hexo] hexo-theme-Danny 更换主题 基础入门（二）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.8.</span> <span class="toc-nav-text">hexo源代码和生产代码同时保存在同一个项目里且提交？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.9.</span> <span class="toc-nav-text">git如何生成秘钥？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.0.10.</span> <span class="toc-nav-text">hexo博文添加评论功能？</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Hexo"
+                            title="Hexo">Hexo</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                    <li><a href="https://yaozhixing.github.io/" target="_blank">Danny Blog</a></li>
+                    
+                    <li><a href="https://github.com/yaozhixing" target="_blank">github 姚志星</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 畅言js代码 start -->
+<script type="text/javascript">
+    (function () {
+        var appid = "cyubo3reV";
+        var conf = "prod_0c3e4f8a9f1ab4c2cf005e8db7b95fc9";
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write(
+                '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+                appid + '&conf=' + conf + '"><\/script>');
+        } else {
+            var loadJs = function (d, a) {
+                var c = document.getElementsByTagName("head")[0] || document.head || document
+                    .documentElement;
+                var b = document.createElement("script");
+                b.setAttribute("type", "text/javascript");
+                b.setAttribute("charset", "UTF-8");
+                b.setAttribute("src", d);
+                if (typeof a === "function") {
+                    if (window.attachEvent) {
+                        b.onreadystatechange = function () {
+                            var e = b.readyState;
+                            if (e === "loaded" || e === "complete") {
+                                b.onreadystatechange = null;
+                                a()
+                            }
+                        }
+                    } else {
+                        b.onload = a
+                    }
+                }
+                c.appendChild(b)
+            };
+            loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+                window.changyan.api.config({
+                    appid: appid,
+                    conf: conf
+                })
+            });
+        }
+    })();
+</script>
+<!-- 畅言js代码 end -->
+
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async (u, c) {
+        var d = document,
+            t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+        anchors.options = {
+            visible: 'hover',
+            placement: 'left',
+            icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link {
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top: -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yaozhixing">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Danny 2020
+                    <br>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a href="https://yaozhixing.github.io/">Danny</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=yaozhixing&repo=yaozhixing.github.io&type=star&count=true">
+                    </iframe>
+                    <br>
+                    ICP备案号: 粤ICP备19036275号-1
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async (u, c) {
+        var d = document,
+            t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if ($('#tag_cloud').length !== 0) {
+        async ("http://blog.dannyee.com/js/jquery.tagcloud.js", function () {
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {
+                    start: '#bbbbee',
+                    end: '#0085a1'
+                },
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://yaozhixing.github.io/';
+
+    // Originial
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://blog.dannyee.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
