@@ -21,14 +21,14 @@
     </url>
     
     <url>
-        <loc>http://blog.dannyee.com/about/</loc>
+        <loc>http://blog.dannyee.com/archive/</loc>
         <lastmod>2019-10-14T01:40:37.810Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>http://blog.dannyee.com/archive/</loc>
+        <loc>http://blog.dannyee.com/about/</loc>
         <lastmod>2019-10-14T01:40:37.810Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

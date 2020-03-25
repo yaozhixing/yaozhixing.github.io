@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Nginx linux 入门配置 - Danny Blog
+          Git如何建立连接本地和远端仓库？ - Danny Blog
         
     </title>
 
-    <link rel="canonical" href="http://blog.dannyee.com/article/Nginx-linux-入门配置/">
+    <link rel="canonical" href="http://blog.dannyee.com/article/Git如何建立连接本地和远端仓库？/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('http://cdn.dannyee.com/headbg03.jpg')
+            background-image: url('http://cdn.dannyee.com/headbg12.jpg')
             /*post*/
         
     }
@@ -88,16 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
-                            
-                              <a class="tag" href="/tags/#linux" title="linux">linux</a>
+                              <a class="tag" href="/tags/#git" title="git">git</a>
                             
                         </div>
-                        <h1>Nginx linux 入门配置</h1>
+                        <h1>Git如何建立连接本地和远端仓库？</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Danny on
-                            2020-03-18
+                            2020-03-25
                         </span>
                     </div>
                 
@@ -214,46 +212,33 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3><span id="nginx-入门配置">Nginx 入门配置</span></h3>
+                <h2><span id="本地有工程远端没有创建如何建立连接如何提交">本地有工程，远端没有创建，如何建立连接，如何提交？</span></h2>
 <blockquote>
-<p>最近项目老大，有叫我配置 linux 的 nginx，然后根据项目需求总结一下 nginx 知识；</p>
+<p>往往有时候是这样的，项目先行，或者脚手架工具自动创建的 web 工程名，功能都完成一个版本了，git 仓库并没有建立项目，因此我们要如何关联起来，一键提交到 git 上去。</p>
 </blockquote>
-<h4><span id="一-介绍">一、介绍</span></h4>
-<p>Nginx 是一个 web 服务器也可以用来做负载均衡及反向代理使用，目前使用最多的就是负载均衡，具体简介我就不介绍了百度一下有很多，下面直接进入安装步骤</p>
-<h4><span id="二-官网">二、 官网</span></h4>
-<p>nginx： <a href="https://note.youdao.com/" target="_blank" rel="noopener">http://www.nginx.org/</a></p>
-<h4><span id="三-nginx-安装">三、Nginx 安装</span></h4>
-<h5><span id="1-下载-nginx-及相关组件">1、下载 Nginx 及相关组件</span></h5>
-<p>进入 usr/local/src/ 目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /] cd usr/local/src/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# wget http://nginx.org/download/nginx-1.10.2.tar.gz</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# wget http://www.openssl.org/source/openssl-fips-2.0.10.tar.gz</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# wget http://zlib.net/zlib-1.2.11.tar.gz</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz</span><br></pre></td></tr></table></figure>
-<h5><span id="2-安装-nginx-及相关组件">2、安装 Nginx 及相关组件</span></h5>
-<p>openssl 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf openssl-fips-2.0.10.tar.gz</span><br><span class="line">省略安装内容...</span><br><span class="line"></span><br><span class="line">[root@localhost src]# cd openssl-fips-2.0.10</span><br><span class="line">[root@localhost openssl-fips-2.0.10]# ./config &amp;&amp; make &amp;&amp; make install</span><br><span class="line">省略安装内容...</span><br></pre></td></tr></table></figure>
-<p>pcre 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf pcre-8.40.tar.gz</span><br><span class="line">省略安装内容...</span><br><span class="line">[root@localhost src]# cd pcre-8.40</span><br><span class="line">[root@localhost pcre-8.40]# ./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">省略安装内容...</span><br></pre></td></tr></table></figure>
-<p>zlib 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf zlib-1.2.11.tar.gz</span><br><span class="line">省略安装内容...</span><br><span class="line">[root@localhost src]# cd zlib-1.2.11</span><br><span class="line">[root@localhost zlib-1.2.11]# ./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">省略安装内容...</span><br></pre></td></tr></table></figure>
-<p>nginx 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf nginx-1.10.2.tar.gz</span><br><span class="line">省略安装内容...</span><br><span class="line">[root@localhost src]# cd nginx-1.10.2</span><br><span class="line">[root@localhost nginx-1.10.2]# ./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">省略安装内容...</span><br></pre></td></tr></table></figure>
-<h5><span id="3-启动-nginx">3、启动 nginx</span></h5>
-<p>进入 nginx 安装目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /] cd usr/local/nginx/</span><br><span class="line">[root@localhost nginx]</span><br></pre></td></tr></table></figure>
-<p>启动 nginx 命令[记住][记住][记住]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx] /usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
-<p>ok，完成<br>
-进入 Linux 系统的图形界面，打开浏览器输入 localhost，说明 nginx 启动成功</p>
-<hr>
-<h4><span id="四-nginx-的基本操作">四、nginx 的基本操作</span></h4>
-<h5><span id="1-基础命令">1、基础命令</span></h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">启动</span><br><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx</span><br><span class="line"></span><br><span class="line">停止/重启</span><br><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -s stop(quit、reload)</span><br><span class="line"></span><br><span class="line">命令帮助</span><br><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -h</span><br><span class="line"></span><br><span class="line">验证配置文件</span><br><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line"></span><br><span class="line">配置文件</span><br><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-<h5><span id="2-如何知道-nginx-安装位置">2、如何知道 nginx 安装位置？</span></h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ps -nux | grep nginx</span><br></pre></td></tr></table></figure>
-<h5><span id="3-vim-简单语法">3、vim 简单语法</span></h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">默认vim打开后是不能录入的，需要按键才能操作，具体如下：</span><br><span class="line">开启编辑：按“i”或者“Insert”键</span><br><span class="line">退出编辑：“Esc”键</span><br><span class="line">退出vim：“:q”</span><br><span class="line">保存vim：“:w”</span><br><span class="line">保存退出vim：“:wq”</span><br><span class="line">不保存退出vim：“:q!”</span><br></pre></td></tr></table></figure>
+<h4><span id="1-在-github-上点击-新建项目">1. 在 github 上点击 【新建项目】</span></h4>
+<h4><span id="2-在本地创建一个工程名">2. 在本地创建一个【工程名】</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &lt;工程名&gt;</span><br></pre></td></tr></table></figure>
+<h4><span id="3-进到文件名下">3. 进到文件名下</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd 工程名</span><br></pre></td></tr></table></figure>
+<h4><span id="4-初始化-git-仓库">4. 初始化 git 仓库</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h4><span id="5-建立连接">5. 建立连接</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址（github上的）</span><br></pre></td></tr></table></figure>
+<h4><span id="5-把分支上的文件拉下来">5. 把分支上的文件拉下来</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<h4><span id="6-开发项目写代码">6. 开发项目，写代码</span></h4>
+<h4><span id="7-添加">7. 添加</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<h4><span id="8-提交本地">8. 提交本地</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;init program&quot;</span><br></pre></td></tr></table></figure>
+<h4><span id="9-推送">9. 推送</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>PS：如果推送失败，建议使用 强制推送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master -f</span><br></pre></td></tr></table></figure>
+<h2><span id="远端有仓库本地没有工程最常见">远端有仓库，本地没有工程（最常见）</span></h2>
+<p>1.克隆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 仓库地址</span><br></pre></td></tr></table></figure>
 
 
 
@@ -261,15 +246,10 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/article/Nginx配置-config文件中root和alias的区别/" data-toggle="tooltip" data-placement="top"
-                            title="Nginx配置 config文件中root和alias的区别">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/article/nginx-window-命令/" data-toggle="tooltip" data-placement="top"
-                            title="nginx window 命令">Next Post &rarr;</a>
+                        <a href="/article/Git-多个仓库管理/" data-toggle="tooltip" data-placement="top"
+                            title="Git 多个仓库管理">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -333,7 +313,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nginx 入门配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一、介绍</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二、 官网</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">三、Nginx 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">1、下载 Nginx 及相关组件</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2、安装 Nginx 及相关组件</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">3、启动 nginx</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">四、nginx 的基本操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">1、基础命令</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">2、如何知道 nginx 安装位置？</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">3、vim 简单语法</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">本地有工程，远端没有创建，如何建立连接，如何提交？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1. 在 github 上点击 【新建项目】</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2. 在本地创建一个【工程名】</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3. 进到文件名下</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4. 初始化 git 仓库</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">5. 建立连接</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">5. 把分支上的文件拉下来</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">6. 开发项目，写代码</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.8.</span> <span class="toc-nav-text">7. 添加</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.9.</span> <span class="toc-nav-text">8. 提交本地</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.0.10.</span> <span class="toc-nav-text">9. 推送</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">远端有仓库，本地没有工程（最常见）</span></a></li></ol>
         
         </div>
       </aside>
@@ -353,11 +333,8 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#nginx"
-                            title="nginx">nginx</a>
-                        
-                        <a class="tag" href="/tags/#linux"
-                            title="linux">linux</a>
+                        <a class="tag" href="/tags/#git"
+                            title="git">git</a>
                         
                     </div>
                 </section>

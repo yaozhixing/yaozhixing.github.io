@@ -23,13 +23,6 @@
     </url>
 
     <url>
-        <loc>http://blog.dannyee.com/tags/nginx/</loc>
-        <lastmod>2020-03-18T01:15:20.605Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.dannyee.com/tags/vue/</loc>
         <lastmod>2020-03-18T01:15:20.605Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -51,15 +44,29 @@
     </url>
 
     <url>
-        <loc>http://blog.dannyee.com/tags/linux/</loc>
+        <loc>http://blog.dannyee.com/tags/vim/</loc>
         <lastmod>2020-03-18T01:39:29.368Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.dannyee.com/tags/vim/</loc>
-        <lastmod>2020-03-18T01:39:29.368Z</lastmod>
+        <loc>http://blog.dannyee.com/tags/nginx/</loc>
+        <lastmod>2020-03-25T04:50:34.170Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.dannyee.com/tags/linux/</loc>
+        <lastmod>2020-03-25T04:50:54.135Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.dannyee.com/tags/git/</loc>
+        <lastmod>2020-03-25T04:58:05.134Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
